@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  latitude: 
+  longitude: 
+  street_slug: MyString
+  emergency: false
+  theme: MyString
+  like: 
+  user_id: 1
+
+two:
+  latitude: 
+  longitude: 
+  street_slug: MyString
+  emergency: false
+  theme: MyString
+  like: 
+  user_id: 1

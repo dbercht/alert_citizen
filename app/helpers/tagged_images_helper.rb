@@ -1,0 +1,2 @@
+module TaggedImagesHelper
+end
