@@ -11,23 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430181104) do
+ActiveRecord::Schema.define(:version => 20120501160557) do
 
   create_table "tagged_images", :force => true do |t|
-    t.float    "latitude"
-    t.float    "longitude"
+    t.decimal  "latitude",           :precision => 14, :scale => 7
+    t.decimal  "longitude",          :precision => 14, :scale => 7
     t.string   "street_slug"
     t.boolean  "emergency"
-    t.string   "theme"
     t.boolean  "like"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.boolean  "gmaps"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "theme_id"
+  end
+
+  create_table "themes", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

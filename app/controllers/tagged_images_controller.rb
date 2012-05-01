@@ -15,7 +15,7 @@ class TaggedImagesController < ApplicationController
 
 	def create
 		logger.info(params)
-		@image = TaggedImage.create(:latitude => params[:latitude], :longitude => params[:longitude], :theme => params[:theme], :street_slug => params[:street_slug], :emergency => params[:emergency], :theme => params[:theme], :like => params[:like], :image => params[:image], :user_id => params[:user_id])
+		@image = TaggedImage.create(:latitude => params[:latitude], :longitude => params[:longitude], :theme => params[:theme], :street_slug => params[:street_slug], :emergency => params[:emergency], :theme_id => params[:theme_id], :like => params[:like], :image => params[:image], :user_id => params[:user_id])
 		render :json => {status => 200}
 		
 	end
