@@ -1,5 +1,5 @@
 AlertCitizen::Application.routes.draw do
-  get "tagged_images/index"
+  resources :tagged_images, :only => [:index, :create]
 
 	namespace :api do
 	  namespace :v1  do
