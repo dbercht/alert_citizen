@@ -3,7 +3,7 @@ class TaggedImagesController < ApplicationController
 		@json = TaggedImage.all.to_gmaps4rails do |image, marker|
 			marker.infowindow render_to_string(:partial => "/tagged_images/marker", :locals => { :image => image})
 			marker.picture({
-				              :picture => "#{iamge.themeImage}",
+				              :picture => "#{image.themeImage}",
 				              :width   => 32,
 				              :height  => 32
 				             })
