@@ -1,4 +1,5 @@
 class TaggedImagesController < ApplicationController
+	before_filter :authenticate_user!
   def index
 		@json = TaggedImage.all.to_gmaps4rails do |image, marker|
 			marker.infowindow render_to_string(:partial => "/tagged_images/marker", :locals => { :image => image})
