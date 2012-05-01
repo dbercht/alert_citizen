@@ -11,7 +11,7 @@ class TaggedImage < ActiveRecord::Base
 	end
 
 	def themeImage
-		"/images/theme_markers/"+id+".png"
+		"/images/theme_markers/"+id.to_s+".png"
 	end
 
 end
