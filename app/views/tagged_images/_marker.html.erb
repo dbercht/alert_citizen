@@ -1,2 +1,14 @@
 <h2><%=image.street_slug%></h2>
-<img src='<%=image.image.url(:thumbnail)%>' />
+<p><%=image.theme%></p>
+<%if image.emergency %>
+	<p>Emergency</p>
+<% else %>
+	<p>Not Emergency</p>
+<% end %>
+<%if image.like %>
+	<p>Liked</p>
+<% else %>
+	<p>Not liked</p>
+<% end %>
+
+<a href='<%=image.image.url%>'><img src='<%=image.image.url(:thumbnail)%>' /></a>
