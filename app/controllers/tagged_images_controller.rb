@@ -14,7 +14,7 @@ class TaggedImagesController < ApplicationController
   end
 
 	def create
-		@image = TaggedImage.create(:latitude => params[:latitude], :longitude => params[:longitude], :theme => params[:theme], :street_slug => params[:street_slug], :emergency => params[:emergency], :theme => params[:theme], :like => params[:like])
+		@image = TaggedImage.create(:latitude => params[:latitude], :longitude => params[:longitude], :theme => params[:theme], :street_slug => params[:street_slug], :emergency => params[:emergency], :theme => params[:theme], :like => params[:like], :image => params[:image], :user_id => params[:user_id])
 		respond_to :json
 	end
 end
