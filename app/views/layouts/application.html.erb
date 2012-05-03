@@ -8,10 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<ul class="hmenu">
-  <%= render 'users/menu/registration_items' %>
-  <%= render 'users/menu/login_items' %>
-</ul>
+<div id="user_menu">
+	<h3>Alert Citizen</h3>
+	<ul class="hmenu">
+		<%= render 'users/menu/registration_items' %>
+		<%= render 'users/menu/login_items' %>
+	</ul>
+<div class='clear'></div>
+</div>
+<hr />
 <%= yield %>
 <%= yield :scripts %>
 </body>

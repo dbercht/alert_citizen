@@ -13,3 +13,40 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+jQuery(document).ready(function(){
+	var dates = $( "#date_from, #date_to" ).datepicker({
+			defaultDate: "+1w",
+			onSelect: function( selectedDate ) {
+				var option = this.id == "date_from" ? "minDate" : "maxDate",
+					instance = $( this ).data( "datepicker" ),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings );
+				dates.not( this ).datepicker( "option", option, date );
+			}
+		});
+	var formButton = $( "#search_form_button" ).button().click(function(){
+				$( "#search_form" ).dialog( "open" );
+	});
+$( "#search_form" ).dialog({
+			autoOpen: false,
+			height: 500,
+			width: 300,
+			modal: true,
+			title: "Search Alerts",
+			buttons: {
+				"Search": function() {
+						$("#search").submit();
+						$( this ).dialog( "close" );
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ui-state-error" );
+			}
+		});
+});

@@ -1,14 +1,22 @@
-<h2><%=image.street_slug%></h2>
-<p><%=image.theme.title%></p>
 <%if image.emergency %>
-	<p>Emergency</p>
+	<div class="emergency" >
 <% else %>
-	<p>Not Emergency</p>
+	<div>
 <% end %>
+<div class="street_container">
+	<p><%=image.street_slug%></p>
+</div>
+<div class="images_container">
+	<a href='<%=image.image.url%>'><img class='image' src='<%=image.image.url(:thumbnail)%>' /></a>
+	<img class='theme-icon' src='<%=image.themeImage%>' />
+	<%if image.emergency %>
+		<%= image_tag("emergency.jpg", :height =>'32', :class=>'emergency') %>
+	<% end %>
 <%if image.like %>
-	<p>Liked</p>
+	<%= image_tag("thumbup.png", :height =>'32', :class=>'like') %>
 <% else %>
-	<p>Not liked</p>
+	<%= image_tag("thumbsdown.png", :height =>'32', :class=>'like') %>
 <% end %>
+</div>
+<div class='clear'></div>
 
-<a href='<%=image.image.url%>'><img src='<%=image.image.url(:thumbnail)%>' /></a>

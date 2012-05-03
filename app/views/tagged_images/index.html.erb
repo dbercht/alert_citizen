@@ -1,4 +1,47 @@
-<h1>TaggedImages#index</h1>
-<%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list" } }) %>
+<div  style="text-align:center;">
+	<button id="search_form_button" class="right">Search Alerts</button>
+	<h4 class="clear">Showing 
+	<%if (params[:user_tagged]=="on")%>
+		my
+	<%end%>
+<% @date_format = "%A, %B %e, %Y" %>
+	results from <%=@start_date.strftime(@date_format)%> to <%=@end_date.strftime(@date_format)%></h4>
+</div>
+<div id="search_form" class="hidden">
+	<%= form_tag tagged_images_path, :method => 'get', :id => "search" do %>
+		  <table>
+				<tr><td>From:</td><td><input name="range[start_date]" id="date_from" size="10"/></td></tr>
+				<tr><td>To:</td><td><input name="range[end_date]" id="date_to" size="10" /></td></tr>
+				<%if current_user %>
+			 		<tr><td><input name="user_tagged" type="checkbox" /></td><td>My alerts only</td></tr> 
+				<%end%>
+			 	<tr><td><input name="liked" type="checkbox" /></td><td>
+	<%= image_tag("thumbup.png", :height =>'32', :class=>'like') %>Liked</td></tr> 
+			 	<tr><td><input name="disliked" type="checkbox" /></td><td>
+	<%= image_tag("thumbsdown.png", :height =>'32', :class=>'like') %>Disliked</td></tr> 
+				<tr><td><input name="emergency" type="checkbox" /></td><td>
+		<%= image_tag("emergency.jpg", :height =>'32', :class=>'emergency') %><%= "Emergency alerts only" %></td></tr>
+<tr><td><br /></td></tr>
+				<tr><td></td><td><u>View alerts only for</u></p></td></tr>
+				<% for theme in @themes %>
+					<tr><td><%= check_box_tag "search[theme_ids][]", theme.id %></td><td>
+	<img class='theme-icon' src='<%=theme.theme_image%>' /><p><%= theme.title %></p></td></tr>
+				<% end %>
+		  </table>
+		  <%= submit_tag "Search", :name => nil, :class=>'hidden' %>
+		</p>
+	<% end %>
+</div>
+<div class="clear"></div>
+<div id="map_info">
+	<div id='map_container'>
+		<%= gmaps({"map_options" => { "type" => "SATELLITE", "center_longitude" => -72,"center_latitude" => -10, "zoom" =>3, "auto_adjust" => true, "do_clustering" => true}, "markers" => {"data" => @json, "options" => {"list_container" => "markers_list" }}}) %>
+	</div>
+	<div id='markers_list_container'>
+			<ul id="markers_list">
+		  </ul>
+	</div>
+	<div class="clear"></div>
+</div>
 
-<ul id="markers_list">  </ul>
+

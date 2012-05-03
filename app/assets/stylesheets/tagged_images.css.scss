@@ -1,3 +1,88 @@
 // Place all the styles related to the tagged_images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#map_info{
+	background:#fafaff;
+	width: 1085px;
+	height: 440px;
+	margin: 0px auto;
+	padding: 5px ;
+	#map_container{
+		padding-top:10px;
+		width:800px;
+		float:left;
+	}
+	#markers_list_container{
+		width:285px;
+		float:right;
+		margin-top:-5px;
+		
+		ul{
+		height: 410px;
+		overflow:auto;
+		overflow-x: hidden;
+			list-style-type:none;
+		}
+		ul li div.emergency{
+			background:#Fee;		
+		}
+		ul li{
+			position:relative;
+			border: 1px solid black;
+			padding:2px;
+		}
+		ul li p{
+			font-size: .7em;
+		}
+		ul li .images_container{
+			float:left;
+			width:70px;
+		}
+		ul li .street_container{
+			float:right;
+			width:150px;
+			}
+		ul li img.image{
+			display:none;
+		}
+		ul li img.theme-icon{
+			margin-top:2px;
+			float: right;
+			z-index:-2;
+			opacity:.75;
+		}
+		ul li img.emergency{
+			margin-top:2px;
+			float: left;
+			display: none;
+			z-index:-2;
+			opacity:.75;
+		}
+		ul img.like{
+			float:left;
+			margin-top:2px;
+			z-index:-1;
+			opacity:.75;
+		}
+	}
+}
+
+#search_form_button, #search_form{
+	font-size:.8em;
+	text-align: left;
+	margin: 0px auto;
+}
+ #search_form table{
+	margin: 0px auto;
+	display: inline;
+}
+
+#search_form table tr td img{
+	display: inline;
+	margin-right: 5px; 
+}
+#search_form table tr td p{
+	display: inline;
+	padding-bottom: 5px;
+}
+

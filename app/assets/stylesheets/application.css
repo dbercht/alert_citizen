@@ -13,12 +13,48 @@
 */
 require gmaps4rails
 
+#user_menu{
+	height: 10px;
+	background:#AAF;
+}
+#user_menu h3{
+	padding:0;
+	margin:0;
+	padding-left:50px;
+	width: 200px;
+	height: 15px;
+	float:left;
+}
 ul.hmenu {
+	padding:0;
+	margin:0;
+	height: 15px;
+	padding-right:50px;
   list-style: none;	
-  margin: 0 0 2em;
-  padding: 0;
+  margin: 0 20 2em;
+	float:right;
 }
 
 ul.hmenu li {
   display: inline;  
+}
+
+.hidden{
+	display: none;
+}
+
+.clear{
+	clear:both;
+}
+
+.right{
+	float: right;
+}
+
+.left{
+	float: left;
+}
+
+button{
+	font-size:.8em;
 }
