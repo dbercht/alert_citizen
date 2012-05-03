@@ -11,7 +11,7 @@ class TaggedImagesController < ApplicationController
 		elsif(params[:disliked] == "on")
 			@search << "tagged_images.like = false"
 		end
-		if(params[:search][:theme_ids])
+		if(params[:search] && params[:search][:theme_ids])
 			@search << "theme_id IN ("+ params[:search][:theme_ids].join(", ") + ")"
 		end
 		@search << " "
