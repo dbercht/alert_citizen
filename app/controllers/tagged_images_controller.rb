@@ -17,7 +17,7 @@ class TaggedImagesController < ApplicationController
 		@search << " "
 		@search = @search.join(" AND ")
 logger.info(@search)
-		if(params[:range].nil? || params[:range][:start_date].empty?) 
+		if(params[:range].nil? || params[:range][:start_date].empty?|| params[:range][:end_date].empty?) 
 			@start_date = Date.today - 2.days 
 			@end_date = Date.today
 		else 
