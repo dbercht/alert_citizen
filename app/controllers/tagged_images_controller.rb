@@ -44,7 +44,7 @@ logger.info(@search)
 					marker.json({ :id => image.id, :foo => "bar" })
 					end
 				end
-				format.js do
+				format.json do
 					@json = TaggedImage.in_date_range(@start_date, @end_date, @search)
 					render :json => {:tagged_images => @json}
 				end
