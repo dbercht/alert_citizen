@@ -22,7 +22,7 @@ class TaggedImagesController < ApplicationController
 logger.info(@search)
 		if(params[:range].nil? || params[:range][:start_date].empty?|| params[:range][:end_date].empty?) 
 			@start_date = Date.today - 2.days 
-			@end_date = Date.today
+			@end_date = Date.today + 1.day
 		else 
 			@date_string = params[:range][:start_date]
 			@start_date = Date.civil(@date_string.split('/')[2].to_i,@date_string.split('/')[0].to_i, @date_string.split('/')[1].to_i) 
