@@ -5,6 +5,9 @@ class TaggedImagesController < ApplicationController
 		if(params[:emergency] == "on")
 			@search << "emergency = true"
 		end
+		if(params[:user_id])
+			@search << "user_id = " + params[:user_id].to_s
+		end
 		if(params[:liked] == "on" && params[:disliked] == "on")
 		elsif(params[:liked] == "on")
 			@search << "tagged_images.like = true"
@@ -27,16 +30,24 @@ logger.info(@search)
 			@end_date = Date.civil(@date_string.split('/')[2].to_i,@date_string.split('/')[0].to_i, @date_string.split('/')[1].to_i) 
 		end
 		unless(params[:user_tagged] == "on")
-				@json = TaggedImage.in_date_range(@start_date, @end_date, @search).to_gmaps4rails do |image, marker|
-				marker.infowindow render_to_string(:partial => "/tagged_images/marker", :locals => { :image => image})
-				marker.picture({
-						            :picture => "#{image.themeImage}",
-						            :width   => 32,
-						            :height  => 32
-						           })
-				marker.title   "#{image.theme}"
-				marker.sidebar render_to_string(:partial => "/tagged_images/marker", :locals => { :image => image})
-				marker.json({ :id => image.id, :foo => "bar" })
+			respond_to do |format|
+				format.html do
+					@json = TaggedImage.in_date_range(@start_date, @end_date, @search).to_gmaps4rails do |image, marker|
+					marker.infowindow render_to_string(:partial => "/tagged_images/marker", :locals => { :image => image})
+					marker.picture({
+								          :picture => "#{image.themeImage}",
+								          :width   => 32,
+								          :height  => 32
+								         })
+					marker.title   "#{image.theme}"
+					marker.sidebar render_to_string(:partial => "/tagged_images/marker", :locals => { :image => image})
+					marker.json({ :id => image.id, :foo => "bar" })
+					end
+				end
+				format.js do
+					@json = TaggedImage.in_date_range(@start_date, @end_date, @search)
+					render :json => {:tagged_images => @json}
+				end
 			end
 		else
 			@json = current_user.tagged_images.in_date_range(@start_date, @end_date, @search).to_gmaps4rails do |image, marker|
