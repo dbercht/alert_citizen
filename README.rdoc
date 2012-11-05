@@ -1,9 +1,6 @@
 == Cidadao Alerta! (Alert Citizen)
 
 Alert Citizen is a project developed for a Brazilian entrepreneurial contest.
-This app was developed along an Android app that allowed users to take mobile picture of social metropolitan issues such as: 
-1 poverty
-2 traffic
-3 violence
+This app was developed along an Android app that allowed users to take mobile picture of social metropolitan issues such as poverty, traffic, infrastructure, and violence
 
 These pictures are geo-located and presented in a UI that would allow government officials to better understand how citizens see their society.
